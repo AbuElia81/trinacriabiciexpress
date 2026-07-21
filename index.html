@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trinacria Bici Express — Die Balsamo-Route, Sizilien</title>
-<meta name="description" content="Geführte Radwoche auf den Spuren des Abts Paolo Balsamo (1808): von Catania quer über Sizilien nach Palermo. Vier Stunden Rad am Tag, der Rest ist Barock, Meer und gutes Essen.">
+<title>Trinacria Bici Express — Radwochen in Sizilien auf den Spuren Balsamos</title>
+<meta name="description" content="Geführte Radwochen in Sizilien auf den Spuren des Abts Paolo Balsamo (1808). Zwei Routen ab Palermo: quer zum Ätna nach Catania oder in die barocke Grafschaft Modica nach Noto. Vier Stunden Rad am Tag, der Rest ist Barock, Meer und gutes Essen.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -157,6 +157,20 @@ svg .rose-n{fill:var(--fico);opacity:.7}
 @media(max-width:760px){.day{grid-template-columns:56px 1fr;gap:12px}
   .day .km,.day .hm{grid-column:2;font-size:13px}}
 
+/* Routen-Umschalter & zweite Route */
+.switch{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 36px}
+.switch button{font-family:var(--body);font-size:15px;font-weight:500;cursor:pointer;
+  background:transparent;border:1px solid var(--line);color:var(--ink-2);
+  padding:12px 20px;border-radius:2px;transition:.2s;text-align:left}
+.switch button:hover{border-color:var(--ink)}
+.switch button[aria-pressed="true"]{background:var(--ink);color:var(--stone);border-color:var(--ink)}
+.switch button:focus-visible{outline:2px solid var(--fico);outline-offset:2px}
+.off{display:none!important}
+svg #notoPath{stroke:var(--sea)}
+svg .dotB{stroke:var(--sea)}
+svg .lblB{fill:var(--ink-2)}
+.bikeB{stroke:var(--sea)}
+
 /* Preis */
 .dark{background:var(--ink);color:var(--stone);border-top:none}
 .dark .tag{color:var(--limone)}
@@ -250,14 +264,14 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-trans
       <div class="facts">
         <div class="fact"><b>1 290 €</b><small data-i="hero.f1"></small></div>
         <div class="fact"><b data-i="hero.f2b"></b><small data-i="hero.f2"></small></div>
-        <div class="fact"><b>272 km</b><small data-i="hero.f3"></small></div>
+        <div class="fact"><b>2</b><small data-i="hero.f3"></small></div>
       </div>
       <a href="#buchen" class="btn" data-i="btn.book"></a>
       <a href="#balsamo" class="btn ghost" data-i="btn.story"></a>
     </div>
 
     <div class="map-card">
-      <svg viewBox="0 0 800 520" role="img" aria-label="Sizilien mit der Balsamo-Route von Catania nach Palermo">
+      <svg viewBox="0 0 800 520" role="img" aria-label="Sizilien mit den zwei Balsamo-Routen ab Palermo">
         <defs>
           <pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
             <line x1="0" y1="0" x2="0" y2="6" stroke="#10303B" stroke-width=".5" opacity=".35"/>
@@ -278,29 +292,53 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-trans
         <path class="smoke" d="M 666 208 q -8 -12 4 -20 q 10 -6 3 -18"/>
         <text class="lbl" x="628" y="232" style="opacity:.6">Etna 3357</text>
 
-        <!-- Balsamo-Route Catania -> Palermo -->
+        <!-- Route A — Ätna-Route: Palermo -> Catania -->
         <path id="balsamoPath" class="route"
-          d="M 704 302 Q 640 288 600 270 Q 560 254 548 250 Q 486 232 450 214 Q 410 192 402 180 Q 366 154 352 144 Q 326 130 308 122"/>
+          d="M 308 122 Q 326 130 352 144 Q 366 154 402 180 Q 410 192 450 214 Q 486 232 548 250 Q 560 254 600 270 Q 640 288 704 302"/>
+        <!-- Route B — Grafschaft Modica: Palermo -> Noto -->
+        <path id="notoPath" class="route off"
+          d="M 308 122 Q 262 190 250 250 Q 268 330 308 398 Q 365 415 430 428 Q 500 424 560 410 Q 578 418 588 426 Q 610 430 632 432"/>
 
-        <!-- Etappenorte -->
-        <g>
-          <circle class="dot big" cx="704" cy="302" r="5"/><text class="lbl city" x="678" y="322">Catania</text>
-          <circle class="dot" cx="600" cy="270" r="3.6"/><text class="lbl" x="566" y="262">Catenanuova</text>
-          <circle class="dot" cx="548" cy="250" r="3.6"/><text class="lbl" x="540" y="242">Agira</text>
-          <circle class="dot" cx="512" cy="242" r="3.6"/><text class="lbl" x="474" y="258">Leonforte</text>
-          <circle class="dot" cx="450" cy="214" r="3.6"/><text class="lbl" x="418" y="206">Alimena</text>
-          <circle class="dot" cx="402" cy="180" r="3.6"/><text class="lbl" x="350" y="172">Caltavuturo</text>
+        <!-- Palermo (Start beider Routen) -->
+        <circle class="dot big" cx="308" cy="122" r="5.5"/><text class="lbl city" x="228" y="116">PALERMO</text>
+
+        <!-- Etappenorte Route A -->
+        <g id="ptsA">
           <circle class="dot" cx="352" cy="144" r="3.6"/><text class="lbl" x="312" y="136">Termini</text>
-          <circle class="dot big" cx="308" cy="122" r="5.5"/><text class="lbl city" x="228" y="116">PALERMO</text>
+          <circle class="dot" cx="402" cy="180" r="3.6"/><text class="lbl" x="350" y="172">Caltavuturo</text>
+          <circle class="dot" cx="450" cy="214" r="3.6"/><text class="lbl" x="418" y="206">Alimena</text>
+          <circle class="dot" cx="512" cy="242" r="3.6"/><text class="lbl" x="474" y="258">Leonforte</text>
+          <circle class="dot" cx="548" cy="250" r="3.6"/><text class="lbl" x="540" y="242">Agira</text>
+          <circle class="dot" cx="600" cy="270" r="3.6"/><text class="lbl" x="566" y="262">Catenanuova</text>
+          <circle class="dot big" cx="704" cy="302" r="5"/><text class="lbl city" x="678" y="322">Catania</text>
         </g>
 
-        <!-- Radfahrer auf der Route -->
-        <g id="bikeG" class="bike">
+        <!-- Etappenorte Route B -->
+        <g id="ptsB" class="off">
+          <circle class="dot dotB" cx="250" cy="250" r="3.6"/><text class="lbl lblB" x="196" y="246">Corleone</text>
+          <circle class="dot dotB" cx="308" cy="398" r="3.6"/><text class="lbl lblB" x="248" y="414">Agrigento</text>
+          <circle class="dot dotB" cx="430" cy="428" r="3.6"/><text class="lbl lblB" x="408" y="446">Gela</text>
+          <circle class="dot dotB" cx="560" cy="410" r="3.6"/><text class="lbl lblB" x="516" y="402">Ragusa</text>
+          <circle class="dot dotB" cx="588" cy="426" r="3.6"/><text class="lbl lblB" x="596" y="420">Modica</text>
+          <circle class="dot dotB big" cx="632" cy="432" r="5"/><text class="lbl city lblB" x="648" y="436">NOTO</text>
+        </g>
+
+        <!-- Radfahrer Route A -->
+        <g id="bikeA" class="bike">
           <circle cx="-15" cy="0" r="8.5"/>
           <circle cx="15" cy="0" r="8.5"/>
-          <path d="M 15 0 L 2 0 M 2 0 L 6 -13 M 6 -13 L 15 0 M 6 -13 L -9 -13 M -9 -13 L 2 0 M -9 -13 L -15 0 M -9 -13 L -14 -15 M 3 -13 L 9 -13"/>
-          <animateMotion id="ride" dur="9s" repeatCount="indefinite" calcMode="linear">
+          <path d="M -15 0 L -2 0 M -2 0 L -6 -13 M -6 -13 L -15 0 M -6 -13 L 9 -13 M 9 -13 L -2 0 M 9 -13 L 15 0 M 9 -13 L 14 -15 M -3 -13 L -9 -13"/>
+          <animateMotion id="rideA" dur="10s" repeatCount="indefinite" calcMode="linear">
             <mpath href="#balsamoPath" xlink:href="#balsamoPath"/>
+          </animateMotion>
+        </g>
+        <!-- Radfahrer Route B -->
+        <g id="bikeB" class="bike bikeB off">
+          <circle cx="-15" cy="0" r="8.5"/>
+          <circle cx="15" cy="0" r="8.5"/>
+          <path d="M -15 0 L -2 0 M -2 0 L -6 -13 M -6 -13 L -15 0 M -6 -13 L 9 -13 M 9 -13 L -2 0 M 9 -13 L 15 0 M 9 -13 L 14 -15 M -3 -13 L -9 -13"/>
+          <animateMotion id="rideB" dur="11s" repeatCount="indefinite" calcMode="linear">
+            <mpath href="#notoPath" xlink:href="#notoPath"/>
           </animateMotion>
         </g>
 
@@ -359,7 +397,12 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-trans
 <section id="routen">
   <div class="wrap">
     <p class="tag" data-i="routes.tag"></p>
-    <h2 style="max-width:18ch;margin-bottom:34px" data-i="routes.h2"></h2>
+    <h2 style="max-width:20ch;margin-bottom:34px" data-i="routes.h2"></h2>
+
+    <div class="switch" role="group" aria-label="Route">
+      <button id="bA" aria-pressed="true" data-i="routes.btnA"></button>
+      <button id="bB" aria-pressed="false" data-i="routes.btnB"></button>
+    </div>
 
     <div class="route-head">
       <div>
@@ -375,7 +418,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-trans
     </div>
 
     <div class="ledger" id="ledger"></div>
-    <p class="komoot"><a href="https://www.komoot.com/it-it/tour/3109782452?share_token=aRWjFKBTMR1tV32mr7mm9DNXnERGJ0sZfE30XEnsmVEUmBV71s&ref=aso" target="_blank" rel="noopener" data-i="routes.komoot"></a></p>
+    <p class="komoot off" id="komootLink"><a href="https://www.komoot.com/it-it/tour/3109782452?share_token=aRWjFKBTMR1tV32mr7mm9DNXnERGJ0sZfE30XEnsmVEUmBV71s&ref=aso" target="_blank" rel="noopener" data-i="routes.komoot"></a></p>
   </div>
 </section>
 
@@ -436,14 +479,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-trans
   <div class="wrap">
     <p class="tag" data-i="photos.tag"></p>
     <h2 style="max-width:18ch" data-i="photos.h2"></h2>
-    <div class="gallery">
-      <div class="slot" data-foto="fotos/catania.jpg" data-i="photos.s0"></div>
-      <div class="slot" data-foto="fotos/leonforte.jpg" data-i="photos.s1"></div>
-      <div class="slot" data-foto="fotos/madonie.jpg" data-i="photos.s2"></div>
-      <div class="slot" data-foto="fotos/termini.jpg" data-i="photos.s3"></div>
-      <div class="slot" data-foto="fotos/tisch.jpg" data-i="photos.s4"></div>
-      <div class="slot" data-foto="fotos/palermo.jpg" data-i="photos.s5"></div>
-    </div>
+    <div class="gallery" id="gallery"></div>
   </div>
 </section>
 
@@ -463,6 +499,13 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-trans
 
       <label for="e" data-i="form.mail"></label>
       <input id="e" name="email" type="email" required>
+
+      <label for="r" data-i="form.route"></label>
+      <select id="r" name="route">
+        <option data-i="form.optA"></option>
+        <option data-i="form.optB"></option>
+        <option data-i="form.optC"></option>
+      </select>
 
       <label for="d" data-i="form.date"></label>
       <input id="d" name="datum" type="date">
@@ -515,7 +558,13 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-trans
       Madonie — <a href="https://commons.wikimedia.org/wiki/File:Madonie_montagna.jpg">Martin Teetz</a>, <span data-i="foot.pd"></span>;
       Termini Imerese — <a href="https://commons.wikimedia.org/wiki/File:Panorama_(Termini_Imerese)_27_10_2024_04.jpg">Effems</a>, <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>;
       Pasta alla Norma — <a href="https://commons.wikimedia.org/wiki/File:Pasta_alla_Norma_-_Wiki_Loves_Sicilia.jpg">8w9d</a>, <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>;
-      Palermo — <a href="https://commons.wikimedia.org/wiki/File:Ballar%C3%B2,_gente_en_el_mercado,_Palermo,_Sicilia,_Italia,_2015.JPG">Benjamín Núñez González</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a> · <a href="fotos/BILDNACHWEIS.md" data-i="foot.creditsmore"></a></p>
+      Palermo — <a href="https://commons.wikimedia.org/wiki/File:Ballar%C3%B2,_gente_en_el_mercado,_Palermo,_Sicilia,_Italia,_2015.JPG">Benjamín Núñez González</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>;
+      Agrigento — <a href="https://commons.wikimedia.org/wiki/File:Valle_dei_Templi_%E2%80%93_Temple_of_Concordia_2024b.jpg">Cayambe</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>;
+      Ragusa Ibla — <a href="https://commons.wikimedia.org/wiki/File:Panorama_Ragusa_Ibla.JPG">Hein56didden</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>;
+      Modica — <a href="https://commons.wikimedia.org/wiki/File:Modica,_Duomo_di_San_Giorgio.jpg">Ruggero Poggianella</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>;
+      Scicli — <a href="https://commons.wikimedia.org/wiki/File:Scicli_ChurchSanta_Maria_della_Croce_010_0873.jpg">Ludvig14</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>;
+      Noto — <a href="https://commons.wikimedia.org/wiki/File:Noto_nell%27ora_blu.jpg">Gianluca Pirro</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>;
+      Marzamemi — <a href="https://commons.wikimedia.org/wiki/File:Tonnara_Marzamemi.jpg">Einaz80</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a> · <a href="fotos/BILDNACHWEIS.md" data-i="foot.creditsmore"></a></p>
   </div>
 </footer>
 
@@ -528,8 +577,8 @@ de:{
  "nav.balsamo":"Balsamo","nav.routes":"Route","nav.price":"Preis","nav.guides":"Wir zwei","nav.photos":"Sizilien","nav.cta":"Woche buchen",
  "hero.tag":"Geführte Radwoche · Sizilien · seit 1808",
  "hero.h1a":"Vier Stunden im Sattel.","hero.h1b":"Der Rest ist Sizilien.",
- "hero.lede":"Wir fahren eine einzige, große Linie quer über die Insel — die alten Wege, die 1808 der Abt Paolo Balsamo bereiste. Von Catania nach Palermo. Nur langsamer, und mit besserem Essen.",
- "hero.f1":"7 Tage, alles drin","hero.f2b":"~4 h","hero.f2":"Rad pro Tag","hero.f3":"Gesamtstrecke",
+ "hero.lede":"Wir fahren die alten Wege, die 1808 der Abt Paolo Balsamo bereiste — quer über Sizilien. Zwei Linien zur Wahl, beide ab Palermo: zum Ätna nach Catania oder in die barocke Grafschaft Modica nach Noto. Nur langsamer, und mit besserem Essen.",
+ "hero.f1":"7 Tage, alles drin","hero.f2b":"~4 h","hero.f2":"Rad pro Tag","hero.f3":"Routen",
  "btn.book":"Woche buchen","btn.story":"Die Geschichte",
  "map.cap":"Fig. 1 — Sizilien, nach dem Giornale di viaggio, 1808",
  "band.cap":"Zwischen zwei Etappen, irgendwo zwischen Kalkstein und Meer.",
@@ -546,7 +595,8 @@ de:{
  "balsamo.q2t":"„Der Weg war so schlecht und gefährlich, dass die Sänfte ins Wanken geriet.“ — über die Straßen von 1808",
  "balsamo.source":"Paolo Balsamo, Giornale del viaggio fatto in Sicilia e particolarmente nella Contea di Modica — Reale Stamperia, Palermo 1809.",
 
- "routes.tag":"Die Route","routes.h2":"Von Catania nach Palermo, quer über die Insel.",
+ "routes.tag":"Zwei Routen zur Wahl","routes.h2":"Zwei Linien quer über die Insel — beide starten in Palermo.",
+ "routes.btnA":"① Ätna-Route: Palermo → Catania","routes.btnB":"② Grafschaft Modica: Palermo → Noto",
  "routes.komoot":"Streckenverlauf & Höhenprofil auf Komoot ansehen ↗",
  "stats.km":"Gesamt","stats.hm":"Aufstieg","stats.days":"Sa bis Fr","stats.level":"Niveau",
  "price.tag":"Ein Preis, keine Rechenerei",
@@ -568,7 +618,7 @@ de:{
  "guides.bio1":"Hier geboren, hier geblieben. Fährt diese Straßen, seit es sie gibt, und kennt jede Rampe im Hinterland — dazu jeden, der oben Käse macht, unten Fisch fängt und dazwischen Wein keltert. Er führt durch den Barock, als wäre es sein Wohnzimmer. Im Grunde ist es das auch.",
  "guides.role2":"Österreicher in Noto · Deutsch, Italienisch, English",
  "guides.bio2":"Kam zum Radfahren und ist geblieben. Übersetzt Sizilien für alle, die aus dem Norden kommen: Speisekarte, Verkehr, Zeitgefühl. Er plant die Etappen so, dass nachmittags noch Luft für eine Granita bleibt — und fährt bergauf langsamer als Giacomo, dafür redet er mehr.",
- "photos.tag":"Die Route in Bildern","photos.h2":"Kalkstein, Getreide, Meer.",
+ "photos.tag":"Die Route in Bildern","photos.h2":"Kalkstein, Meer, Barock.",
  "photos.s0":"Foto: Catania, Fischmarkt oder Lavastadt am Fuß des Ätna",
  "photos.s1":"Foto: Leonforte, Granfonte-Brunnen im Hinterland",
  "photos.s2":"Foto: Serpentinen in den Madonie",
@@ -579,6 +629,7 @@ de:{
  "book.p":"Wir melden uns innerhalb von zwei Tagen mit den freien Terminen. Die Woche ist mit einer Anzahlung von 300 € fest — der Rest bis vier Wochen vor Anreise.",
  "book.season":"Saison: März bis Juni, September bis November. Im Hochsommer fährt hier niemand freiwillig bergauf.",
  "form.name":"Name","form.mail":"E-Mail",
+ "form.route":"Route","form.optA":"① Ätna-Route: Palermo → Catania","form.optB":"② Grafschaft Modica: Palermo → Noto","form.optC":"Noch unentschieden",
  "form.date":"Wunschtermin","form.people":"Personen","form.lang":"Sprache der Führung",
  "form.msg":"Was sollen wir wissen?","form.send":"Anfrage senden",
  "form.pay":"Anzahlung 300 € bezahlen",
@@ -593,8 +644,8 @@ en:{
  "nav.balsamo":"Balsamo","nav.routes":"Route","nav.price":"Price","nav.guides":"The two of us","nav.photos":"Sicily","nav.cta":"Book a week",
  "hero.tag":"Guided cycling week · Sicily · since 1808",
  "hero.h1a":"Four hours in the saddle.","hero.h1b":"The rest is Sicily.",
- "hero.lede":"We ride one single, grand line across the island — the old ways Abbot Paolo Balsamo travelled in 1808. From Catania to Palermo. Only slower, and with better food.",
- "hero.f1":"7 days, all in","hero.f2b":"~4 h","hero.f2":"riding per day","hero.f3":"total distance",
+ "hero.lede":"We ride the old ways Abbot Paolo Balsamo travelled in 1808 — across Sicily. Two lines to choose from, both out of Palermo: to Etna and Catania, or into the baroque County of Modica and Noto. Only slower, and with better food.",
+ "hero.f1":"7 days, all in","hero.f2b":"~4 h","hero.f2":"riding per day","hero.f3":"routes",
  "btn.book":"Book a week","btn.story":"The story",
  "map.cap":"Fig. 1 — Sicily, after the Giornale di viaggio, 1808",
  "band.cap":"Between two stages, somewhere between limestone and sea.",
@@ -611,7 +662,8 @@ en:{
  "balsamo.q2t":"“The road was so bad and dangerous that it set the litter lurching.” — on the roads of 1808",
  "balsamo.source":"Paolo Balsamo, Giornale del viaggio fatto in Sicilia e particolarmente nella Contea di Modica — Reale Stamperia, Palermo 1809.",
 
- "routes.tag":"The route","routes.h2":"From Catania to Palermo, across the island.",
+ "routes.tag":"Two routes to choose","routes.h2":"Two lines across the island — both start in Palermo.",
+ "routes.btnA":"① Etna route: Palermo → Catania","routes.btnB":"② County of Modica: Palermo → Noto",
  "routes.komoot":"See the full route & elevation profile on Komoot ↗",
  "stats.km":"Total","stats.hm":"Climbing","stats.days":"Sat to Fri","stats.level":"Level",
  "price.tag":"One price, no arithmetic",
@@ -633,7 +685,7 @@ en:{
  "guides.bio1":"Born here, never left. He has ridden these roads for as long as they have existed and knows every ramp in the back country — plus everyone who makes cheese up there, lands fish down below and presses wine in between. He walks you through the baroque the way you'd walk through your own living room. Which, for him, it is.",
  "guides.role2":"An Austrian in Noto · Deutsch, Italiano, English",
  "guides.bio2":"Came for the cycling and stayed. He translates Sicily for anyone arriving from the north: the menu, the traffic, the sense of time. He plans the stages so there's still room for a granita in the afternoon — and climbs slower than Giacomo, but talks more.",
- "photos.tag":"The route in pictures","photos.h2":"Limestone, wheat, sea.",
+ "photos.tag":"The route in pictures","photos.h2":"Limestone, sea, baroque.",
  "photos.s0":"Photo: Catania, fish market or the lava city below Etna",
  "photos.s1":"Photo: Leonforte, the Granfonte fountain inland",
  "photos.s2":"Photo: hairpins in the Madonie",
@@ -644,6 +696,7 @@ en:{
  "book.p":"We'll come back within two days with the free dates. A €300 deposit holds your week; the balance is due four weeks before you arrive.",
  "book.season":"Season: March to June, September to November. In high summer nobody here climbs a hill voluntarily.",
  "form.name":"Name","form.mail":"Email",
+ "form.route":"Route","form.optA":"① Etna route: Palermo → Catania","form.optB":"② County of Modica: Palermo → Noto","form.optC":"Not decided yet",
  "form.date":"Preferred date","form.people":"People","form.lang":"Language of the guiding",
  "form.msg":"Anything we should know?","form.send":"Send enquiry",
  "form.pay":"Pay €300 deposit",
@@ -658,8 +711,8 @@ it:{
  "nav.balsamo":"Balsamo","nav.routes":"Percorso","nav.price":"Prezzo","nav.guides":"Noi due","nav.photos":"Sicilia","nav.cta":"Prenota",
  "hero.tag":"Settimana in bici con guida · Sicilia · dal 1808",
  "hero.h1a":"Quattro ore in sella.","hero.h1b":"Il resto è Sicilia.",
- "hero.lede":"Percorriamo un'unica, grande linea attraverso l'isola — le vie antiche che nel 1808 l'abate Paolo Balsamo attraversò. Da Catania a Palermo. Solo più piano, e si mangia meglio.",
- "hero.f1":"7 giorni, tutto incluso","hero.f2b":"~4 h","hero.f2":"in bici al giorno","hero.f3":"distanza totale",
+ "hero.lede":"Percorriamo le vie antiche che nel 1808 l'abate Paolo Balsamo attraversò — per tutta la Sicilia. Due linee a scelta, entrambe da Palermo: verso l'Etna e Catania, oppure nella barocca Contea di Modica fino a Noto. Solo più piano, e si mangia meglio.",
+ "hero.f1":"7 giorni, tutto incluso","hero.f2b":"~4 h","hero.f2":"in bici al giorno","hero.f3":"percorsi",
  "btn.book":"Prenota la settimana","btn.story":"La storia",
  "map.cap":"Fig. 1 — Sicilia, dal Giornale di viaggio, 1808",
  "band.cap":"Tra due tappe, da qualche parte fra la pietra e il mare.",
@@ -676,7 +729,8 @@ it:{
  "balsamo.q2t":"— sulle strade del 1808",
  "balsamo.source":"Paolo Balsamo, Giornale del viaggio fatto in Sicilia e particolarmente nella Contea di Modica — Reale Stamperia, Palermo 1809.",
 
- "routes.tag":"Il percorso","routes.h2":"Da Catania a Palermo, attraverso l'isola.",
+ "routes.tag":"Due percorsi a scelta","routes.h2":"Due linee attraverso l'isola — partono entrambe da Palermo.",
+ "routes.btnA":"① Percorso Etna: Palermo → Catania","routes.btnB":"② Contea di Modica: Palermo → Noto",
  "routes.komoot":"Guarda il percorso e il dislivello su Komoot ↗",
  "stats.km":"Totale","stats.hm":"Dislivello","stats.days":"Sab–ven","stats.level":"Livello",
  "price.tag":"Un prezzo, senza calcoli",
@@ -698,7 +752,7 @@ it:{
  "guides.bio1":"Nato qui, rimasto qui. Pedala queste strade da sempre e conosce ogni rampa dell'entroterra — e chiunque faccia il formaggio lassù, peschi laggiù e faccia vino nel mezzo. Ti porta dentro il barocco come si porta un ospite in salotto. Che poi, per lui, lo è.",
  "guides.role2":"Austriaco a Noto · Deutsch, Italiano, English",
  "guides.bio2":"È venuto per la bici ed è rimasto. Traduce la Sicilia a chi arriva dal nord: il menù, il traffico, il senso del tempo. Studia le tappe in modo che nel pomeriggio ci sia ancora spazio per una granita — sale più piano di Giacomo, ma parla di più.",
- "photos.tag":"Il percorso in immagini","photos.h2":"Pietra, grano, mare.",
+ "photos.tag":"Il percorso in immagini","photos.h2":"Pietra, mare, barocco.",
  "photos.s0":"Foto: Catania, il mercato del pesce o la città di lava sotto l'Etna",
  "photos.s1":"Foto: Leonforte, la Granfonte nell'entroterra",
  "photos.s2":"Foto: tornanti sulle Madonie",
@@ -709,6 +763,7 @@ it:{
  "book.p":"Rispondiamo entro due giorni con le date libere. La settimana si blocca con un acconto di 300 € — il saldo entro quattro settimane dall'arrivo.",
  "book.season":"Stagione: da marzo a giugno, da settembre a novembre. In piena estate qui nessuno sale una salita per scelta.",
  "form.name":"Nome","form.mail":"E-mail",
+ "form.route":"Percorso","form.optA":"① Percorso Etna: Palermo → Catania","form.optB":"② Contea di Modica: Palermo → Noto","form.optC":"Ancora indeciso",
  "form.date":"Data preferita","form.people":"Persone","form.lang":"Lingua della guida",
  "form.msg":"Cosa dobbiamo sapere?","form.send":"Invia la richiesta",
  "form.pay":"Paga l'acconto di 300 €",
@@ -720,44 +775,97 @@ it:{
 }
 };
 
-/* =====================  ETAPPEN (Balsamo-Route)  ===================== */
+/* =====================  ETAPPEN (zwei Balsamo-Routen)  ===================== */
 const ROUTES = {
-de:{title:"Quer über die Insel, Etappe für Etappe",
-    text:"Die Linie, die Balsamo 1808 gefahren ist — vom Ätna-Vorland über die Erei-Hügel und die Madonie hinunter ans tyrrhenische Meer. Karge Weite am Anfang, Bergdörfer in der Mitte, Küstenstraße am Ende. Die längste Steigung kommt am vierten Tag; danach hast du sie hinter dir.",
+de:{
+ A:{title:"Von der Hauptstadt zum Ätna",
+    text:"Balsamos Heimweg, in Fahrtrichtung genommen: von Palermo an der Küste entlang, hinauf in die Madonie, über die Erei-Hügel und hinunter in die Ebene von Catania — der Ätna immer im Blick. Küste am Anfang, Berge in der Mitte, weite Ebene am Ende. Die längste Steigung wartet am dritten Tag.",
     km:"272 km",hm:"3 200 hm",days:"7 Tage",level:"Mittel",
-    list:[["Tag 1","Catania","Ankunft, Fischmarkt, Rundgang durch die Lavastadt. Abends das erste gemeinsame Essen.","—","—"],
-      ["Tag 2","Catania → Catenanuova","Über den Simeto in die Ebene. Weit, still, kaum ein Baum — genau wie er es beschrieben hat.","62 km","+550 hm"],
-      ["Tag 3","Catenanuova → Leonforte","Hinauf nach Agira auf den Monte Teja. Nachmittags Käse und der Granfonte-Brunnen.","48 km","+900 hm"],
-      ["Tag 4","Leonforte → Alimena","Der lange Tag. Hügel, Getreide, Hitze im Rücken. Belohnung: Abendessen in Alimena.","44 km","+780 hm"],
-      ["Tag 5","Alimena → Caltavuturo","In die Madonie. Der Fels über dem Dorf sieht aus, als wollte er fallen. Tut er seit 800 Jahren nicht.","38 km","+700 hm"],
-      ["Tag 6","Caltavuturo → Termini Imerese","Über Cerda hinunter ans Meer. Ab hier riecht alles nach Salz.","46 km","+310 hm"],
-      ["Tag 7","Termini → Trabia → Palermo","Küstenstraße, Tonnara, Zitrusgärten. Ankunft in Palermo, dann Markt und Abschlussessen.","42 km","+280 hm"]]},
-en:{title:"Across the island, stage by stage",
-    text:"The line Balsamo rode in 1808 — from the foot of Etna over the Erei hills and the Madonie down to the Tyrrhenian Sea. Bare distance at the start, mountain villages in the middle, coast road at the end. The longest climb comes on day four; after that it is behind you.",
+    list:[["Tag 1","Palermo","Ankunft, Markt und Rundgang durch die Hauptstadt. Abends das erste gemeinsame Essen.","—","—"],
+      ["Tag 2","Palermo → Termini Imerese","Über Trabia an der Küste entlang: Tonnara, Zitrusgärten, Salzluft. Flacher Auftakt.","42 km","+280 hm"],
+      ["Tag 3","Termini Imerese → Caltavuturo","Weg vom Meer, hinauf in die Madonie. Der Fels über dem Dorf sieht aus, als wollte er fallen.","46 km","+820 hm"],
+      ["Tag 4","Caltavuturo → Alimena","Über die Höhen der Madonie. Getreide, Weite, kaum ein Auto.","38 km","+520 hm"],
+      ["Tag 5","Alimena → Leonforte","Hügelland und Erei-Berge. Nachmittags Käse und der Granfonte-Brunnen.","44 km","+640 hm"],
+      ["Tag 6","Leonforte → Catenanuova","Über Agira auf dem Monte Teja hinunter in die Ebene.","48 km","+470 hm"],
+      ["Tag 7","Catenanuova → Catania","Über den Simeto in die Lavastadt. Fischmarkt, dann Abschlussessen.","54 km","+470 hm"]]},
+ B:{title:"Der Süden, hinunter in die Grafschaft Modica",
+    text:"Balsamos zweite Linie — von Palermo quer nach Süden zu den Tempeln von Agrigent, über Gela hinauf in die Iblei und durch die Grafschaft Modica bis nach Noto. Barocke Städte aus honigfarbenem Stein, Trockenmauern, Meer. Länger und härter als die Ätna-Route — aber jeder Abend endet in einer Unesco-Stadt.",
+    km:"299 km",hm:"4 890 hm",days:"7 Tage",level:"Schwer",
+    list:[["Tag 1","Palermo","Ankunft, Markt Ballarò, Start in der Hauptstadt. Abends das erste gemeinsame Essen.","—","—"],
+      ["Tag 2","Palermo → Corleone","Weg von der Küste, hinauf ins Landesinnere. Weizen, Hügel, Stille.","55 km","+780 hm"],
+      ["Tag 3","Corleone → Agrigento","Durch das Hügelland ans Meer. Abends die Tempel im Abendlicht.","60 km","+560 hm"],
+      ["Tag 4","Agrigento → Gela","Südküste entlang, Wind von der Seite, Meer zur Rechten.","52 km","+430 hm"],
+      ["Tag 5","Gela → Ragusa Ibla","Hinauf in die Iblei — die längste Rampe der Woche. Belohnung: Ibla bei Sonnenuntergang.","50 km","+980 hm"],
+      ["Tag 6","Ragusa → Modica → Scicli","Das Herz der Grafschaft: Barock, Schokolade, Steintreppen.","40 km","+940 hm"],
+      ["Tag 7","Scicli → Noto","Durch die Iblei heim nach Noto. Abschlussessen bei Freunden.","42 km","+1 200 hm"]]}
+},
+en:{
+ A:{title:"From the capital to Etna",
+    text:"Balsamo's way home, ridden the way he came: out of Palermo along the coast, up into the Madonie, over the Erei hills and down into the plain of Catania — Etna in view the whole way. Coast at the start, mountains in the middle, wide plain at the end. The longest climb waits on day three.",
     km:"272 km",hm:"3,200 m",days:"7 days",level:"Moderate",
-    list:[["Day 1","Catania","Arrival, fish market, a walk through the lava city. First dinner together.","—","—"],
-      ["Day 2","Catania → Catenanuova","Across the Simeto into the plain. Wide, silent, barely a tree — exactly as he described it.","62 km","+550 m"],
-      ["Day 3","Catenanuova → Leonforte","Up to Agira on Monte Teja. In the afternoon, cheese and the Granfonte fountain.","48 km","+900 m"],
-      ["Day 4","Leonforte → Alimena","The long day. Hills, wheat, heat at your back. Reward: dinner in Alimena.","44 km","+780 m"],
-      ["Day 5","Alimena → Caltavuturo","Into the Madonie. The rock above the village looks like it's about to fall. It hasn't for 800 years.","38 km","+700 m"],
-      ["Day 6","Caltavuturo → Termini Imerese","Down past Cerda to the sea. From here on, everything smells of salt.","46 km","+310 m"],
-      ["Day 7","Termini → Trabia → Palermo","Coast road, tuna works, citrus gardens. Into Palermo, then the market and the farewell dinner.","42 km","+280 m"]]},
-it:{title:"Attraverso l'isola, tappa dopo tappa",
-    text:"La linea che Balsamo percorse nel 1808 — dalle pendici dell'Etna sugli Erei e sulle Madonie, giù fino al Tirreno. Distesa spoglia all'inizio, paesi di montagna nel mezzo, strada costiera alla fine. La salita più lunga arriva il quarto giorno; dopo te la sei tolta.",
+    list:[["Day 1","Palermo","Arrival, market and a walk through the capital. First dinner together.","—","—"],
+      ["Day 2","Palermo → Termini Imerese","Along the coast past Trabia: tuna works, citrus gardens, salt air. A flat opener.","42 km","+280 m"],
+      ["Day 3","Termini Imerese → Caltavuturo","Away from the sea, up into the Madonie. The rock above the village looks about to fall.","46 km","+820 m"],
+      ["Day 4","Caltavuturo → Alimena","Across the Madonie heights. Wheat, distance, hardly a car.","38 km","+520 m"],
+      ["Day 5","Alimena → Leonforte","Hills and the Erei mountains. In the afternoon, cheese and the Granfonte fountain.","44 km","+640 m"],
+      ["Day 6","Leonforte → Catenanuova","Over Agira on Monte Teja, down into the plain.","48 km","+470 m"],
+      ["Day 7","Catenanuova → Catania","Across the Simeto into the lava city. Fish market, then the farewell dinner.","54 km","+470 m"]]},
+ B:{title:"The south, down into the County of Modica",
+    text:"Balsamo's second line — from Palermo straight south to the temples of Agrigento, over Gela up into the Iblei and through the County of Modica to Noto. Baroque towns of honey-coloured stone, dry-stone walls, sea. Longer and harder than the Etna route — but every evening ends in a Unesco town.",
+    km:"299 km",hm:"4,890 m",days:"7 days",level:"Hard",
+    list:[["Day 1","Palermo","Arrival, the Ballarò market, a start in the capital. First dinner together.","—","—"],
+      ["Day 2","Palermo → Corleone","Away from the coast, up into the interior. Wheat, hills, silence.","55 km","+780 m"],
+      ["Day 3","Corleone → Agrigento","Through the hill country to the sea. In the evening, the temples in low light.","60 km","+560 m"],
+      ["Day 4","Agrigento → Gela","Along the south coast, wind on the beam, sea on your right.","52 km","+430 m"],
+      ["Day 5","Gela → Ragusa Ibla","Up into the Iblei — the longest climb of the week. Reward: Ibla at sunset.","50 km","+980 m"],
+      ["Day 6","Ragusa → Modica → Scicli","The heart of the county: baroque, chocolate, stone staircases.","40 km","+940 m"],
+      ["Day 7","Scicli → Noto","Through the Iblei home to Noto. Farewell dinner at friends' place.","42 km","+1,200 m"]]}
+},
+it:{
+ A:{title:"Dalla capitale all'Etna",
+    text:"La via del ritorno di Balsamo, presa nel senso di marcia: da Palermo lungo la costa, su per le Madonie, sugli Erei e giù nella piana di Catania — l'Etna sempre davanti. Costa all'inizio, montagne nel mezzo, piana larga alla fine. La salita più lunga aspetta il terzo giorno.",
     km:"272 km",hm:"3.200 m",days:"7 giorni",level:"Medio",
-    list:[["1° g.","Catania","Arrivo, mercato del pesce, giro nella città di lava. La sera la prima cena insieme.","—","—"],
-      ["2° g.","Catania → Catenanuova","Oltre il Simeto, nella piana. Larga, silenziosa, quasi senza alberi — come l'aveva descritta lui.","62 km","+550 m"],
-      ["3° g.","Catenanuova → Leonforte","Su ad Agira, sul Monte Teja. Nel pomeriggio formaggio e la Granfonte.","48 km","+900 m"],
-      ["4° g.","Leonforte → Alimena","Il giorno lungo. Colline, grano, caldo alle spalle. Premio: cena ad Alimena.","44 km","+780 m"],
-      ["5° g.","Alimena → Caltavuturo","Dentro le Madonie. La rupe sopra il paese sembra volergli cadere addosso. Non lo fa da 800 anni.","38 km","+700 m"],
-      ["6° g.","Caltavuturo → Termini Imerese","Giù per Cerda fino al mare. Da qui in poi sa tutto di sale.","46 km","+310 m"],
-      ["7° g.","Termini → Trabia → Palermo","Costa, tonnara, agrumeti. Arrivo a Palermo, poi il mercato e la cena finale.","42 km","+280 m"]]}
+    list:[["1° g.","Palermo","Arrivo, mercato e giro nella capitale. La sera la prima cena insieme.","—","—"],
+      ["2° g.","Palermo → Termini Imerese","Lungo la costa passando per Trabia: tonnara, agrumeti, aria di sale. Avvio in piano.","42 km","+280 m"],
+      ["3° g.","Termini Imerese → Caltavuturo","Via dal mare, su nelle Madonie. La rupe sopra il paese sembra volergli cadere addosso.","46 km","+820 m"],
+      ["4° g.","Caltavuturo → Alimena","Sugli altipiani delle Madonie. Grano, distese, quasi nessuna auto.","38 km","+520 m"],
+      ["5° g.","Alimena → Leonforte","Colline e monti Erei. Nel pomeriggio formaggio e la Granfonte.","44 km","+640 m"],
+      ["6° g.","Leonforte → Catenanuova","Su ad Agira, sul Monte Teja, e giù nella piana.","48 km","+470 m"],
+      ["7° g.","Catenanuova → Catania","Oltre il Simeto, nella città di lava. Mercato del pesce, poi la cena finale.","54 km","+470 m"]]},
+ B:{title:"Il sud, giù nella Contea di Modica",
+    text:"La seconda linea di Balsamo — da Palermo dritti a sud fino ai templi di Agrigento, oltre Gela su negli Iblei e attraverso la Contea di Modica fino a Noto. Città barocche di pietra color miele, muretti a secco, mare. Più lunga e più dura del percorso Etna — ma ogni sera si finisce in una città Unesco.",
+    km:"299 km",hm:"4.890 m",days:"7 giorni",level:"Difficile",
+    list:[["1° g.","Palermo","Arrivo, il mercato di Ballarò, partenza dalla capitale. La sera la prima cena insieme.","—","—"],
+      ["2° g.","Palermo → Corleone","Via dalla costa, su verso l'entroterra. Grano, colline, silenzio.","55 km","+780 m"],
+      ["3° g.","Corleone → Agrigento","Tra le colline fino al mare. La sera i templi nella luce bassa.","60 km","+560 m"],
+      ["4° g.","Agrigento → Gela","Lungo la costa sud, vento di traverso, mare a destra.","52 km","+430 m"],
+      ["5° g.","Gela → Ragusa Ibla","Su negli Iblei — la salita più lunga della settimana. Premio: Ibla al tramonto.","50 km","+980 m"],
+      ["6° g.","Ragusa → Modica → Scicli","Il cuore della Contea: barocco, cioccolato, scalinate di pietra.","40 km","+940 m"],
+      ["7° g.","Scicli → Noto","Per gli Iblei a casa, a Noto. Cena finale da amici.","42 km","+1.200 m"]]}
+}
+};
+
+/* =====================  GALERIE-FOTOS je Route  ===================== */
+const GALLERY = {
+de:{
+ A:[["palermo.jpg","Foto: Palermo, Markt Ballarò und Start"],["termini.jpg","Foto: Termini Imerese, erste Küste am tyrrhenischen Meer"],["madonie.jpg","Foto: Serpentinen in den Madonie"],["leonforte.jpg","Foto: Leonforte, Granfonte-Brunnen im Hinterland"],["catania.jpg","Foto: Catania, Piazza del Duomo am Fuß des Ätna"],["tisch.jpg","Foto: Gedeckter Tisch, Pasta alla Norma, Wein"]],
+ B:[["agrigento.jpg","Foto: Agrigent, Valle dei Templi"],["ragusa.jpg","Foto: Ragusa Ibla über der Schlucht"],["modica.jpg","Foto: Modica, San Giorgio"],["scicli.jpg","Foto: Scicli, Barock aus honigfarbenem Stein"],["noto.jpg","Foto: Noto zur blauen Stunde"],["marzamemi.jpg","Foto: Marzamemi, alte Tonnara am Meer"]]
+},
+en:{
+ A:[["palermo.jpg","Photo: Palermo, the Ballarò market and the start"],["termini.jpg","Photo: Termini Imerese, first coast on the Tyrrhenian Sea"],["madonie.jpg","Photo: hairpins in the Madonie"],["leonforte.jpg","Photo: Leonforte, the Granfonte fountain inland"],["catania.jpg","Photo: Catania, Piazza del Duomo below Etna"],["tisch.jpg","Photo: a laid table, pasta alla Norma, wine"]],
+ B:[["agrigento.jpg","Photo: Agrigento, Valley of the Temples"],["ragusa.jpg","Photo: Ragusa Ibla above the gorge"],["modica.jpg","Photo: Modica, San Giorgio"],["scicli.jpg","Photo: Scicli, baroque in honey-coloured stone"],["noto.jpg","Photo: Noto at the blue hour"],["marzamemi.jpg","Photo: Marzamemi, the old tuna works by the sea"]]
+},
+it:{
+ A:[["palermo.jpg","Foto: Palermo, il mercato di Ballarò e la partenza"],["termini.jpg","Foto: Termini Imerese, la prima costa sul Tirreno"],["madonie.jpg","Foto: tornanti sulle Madonie"],["leonforte.jpg","Foto: Leonforte, la Granfonte nell'entroterra"],["catania.jpg","Foto: Catania, Piazza del Duomo sotto l'Etna"],["tisch.jpg","Foto: tavola apparecchiata, pasta alla Norma, vino"]],
+ B:[["agrigento.jpg","Foto: Agrigento, Valle dei Templi"],["ragusa.jpg","Foto: Ragusa Ibla sopra la cava"],["modica.jpg","Foto: Modica, San Giorgio"],["scicli.jpg","Foto: Scicli, barocco di pietra color miele"],["noto.jpg","Foto: Noto nell'ora blu"],["marzamemi.jpg","Foto: Marzamemi, l'antica tonnara sul mare"]]
+}
 };
 
 /* =====================  LOGIK  ===================== */
 const $=s=>document.querySelector(s);
 const SUPPORTED=["de","en","it"];
-let lang="de";
+const REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let lang="de", route="A";
 
 function pickLang(){
   const q=new URLSearchParams(location.search).get("lang");
@@ -778,8 +886,28 @@ function paintText(){
     b.setAttribute("aria-pressed", b.dataset.lang===lang));
 }
 
+/* Karte: nur die aktive Route, ihre Orte und ihren Radfahrer zeigen */
+function paintMap(){
+  const setOff=(id,off)=>{const e=document.getElementById(id); if(e) e.classList.toggle("off",off);};
+  setOff("balsamoPath", route!=="A"); setOff("ptsA", route!=="A"); setOff("bikeA", route!=="A");
+  setOff("notoPath",    route!=="B"); setOff("ptsB", route!=="B"); setOff("bikeB", route!=="B");
+}
+
+/* Galerie: Fotos der aktiven Route, Platzhalter bis das Bild geladen ist */
+function renderGallery(){
+  const box=$("#gallery");
+  box.innerHTML=GALLERY[lang][route].map(x=>
+    `<div class="slot" data-foto="fotos/${x[0]}">${x[1]}</div>`).join("");
+  box.querySelectorAll(".slot[data-foto]").forEach(slot=>{
+    const cap=slot.textContent, probe=new Image();
+    probe.alt=cap;
+    probe.onload=()=>{slot.textContent="";slot.appendChild(probe)};
+    probe.src=slot.dataset.foto;
+  });
+}
+
 function paintRoute(){
-  const r=ROUTES[lang];
+  const r=ROUTES[lang][route];
   $("#rTitle").textContent=r.title;
   $("#rText").textContent=r.text;
   $("#sKm").textContent=r.km; $("#sHm").textContent=r.hm;
@@ -792,6 +920,12 @@ function paintRoute(){
       <div class="km">${d[3]}</div>
       <div class="hm">${d[4]}</div>
     </div>`).join("");
+
+  $("#bA").setAttribute("aria-pressed", route==="A");
+  $("#bB").setAttribute("aria-pressed", route==="B");
+  $("#komootLink").classList.toggle("off", route!=="B");   // Komoot-Link nur für Route B
+  paintMap();
+  renderGallery();
 }
 
 function setLang(l){
@@ -800,24 +934,19 @@ function setLang(l){
   const u=new URL(location); u.searchParams.set("lang",l);
   history.replaceState(null,"",u);           // Sprache bleibt im Link erhalten
 }
+function setRoute(r){ route=r; paintRoute(); }
 
 document.querySelectorAll(".langs button").forEach(b=>
   b.addEventListener("click",()=>setLang(b.dataset.lang)));
+$("#bA").addEventListener("click",()=>setRoute("A"));
+$("#bB").addEventListener("click",()=>setRoute("B"));
 
-/* Radfahrer auf der Karte anhalten, wenn der Nutzer Bewegung reduziert */
-if(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-  const ride=document.getElementById("ride");
-  if(ride) ride.remove();
-  const g=document.getElementById("bikeG");
-  if(g) g.setAttribute("transform","translate(500 232)");
+/* Radfahrer anhalten, wenn der Nutzer Bewegung reduziert */
+if(REDUCED){
+  ["rideA","rideB"].forEach(id=>{const e=document.getElementById(id); if(e) e.remove();});
+  const gA=document.getElementById("bikeA"); if(gA) gA.setAttribute("transform","translate(470 226)");
+  const gB=document.getElementById("bikeB"); if(gB) gB.setAttribute("transform","translate(430 428)");
 }
-
-/* Fotos: Platzhalter durch echte Datei ersetzen, sobald vorhanden */
-document.querySelectorAll(".slot[data-foto]").forEach(slot=>{
-  const probe=new Image();
-  probe.onload=()=>{slot.textContent="";slot.removeAttribute("data-i");slot.appendChild(probe)};
-  probe.src=slot.dataset.foto; probe.alt="";
-});
 
 /* Formular — später an Formspree o. Ä. hängen */
 $("#form").addEventListener("submit",e=>{
