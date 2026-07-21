@@ -21,12 +21,12 @@ Die Fotos `guides-meer.jpg` und `guides-mauer.jpg` gehören Giacomo und Michael
 
 | Datei | Motiv | Urheber | Lizenz | Quelle |
 |-------|-------|---------|--------|--------|
-| `agrigento.jpg` | Agrigent, Valle dei Templi (Concordia-Tempel) | Cayambe | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [Commons](https://commons.wikimedia.org/wiki/File:Valle_dei_Templi_%E2%80%93_Temple_of_Concordia_2024b.jpg) |
+| `caltanissetta.jpg` | Caltanissetta, Panorama | AlessandroAM | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [Commons](https://commons.wikimedia.org/wiki/File:Caltanissetta_Panorama_2018.jpg) |
+| `caltagirone.jpg` | Caltagirone, Scalinata di Santa Maria del Monte | Effems | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) | [Commons](https://commons.wikimedia.org/wiki/File:Scalinata_di_Santa_Maria_del_Monte_(Caltagirone)_22_12_2024_01.jpg) |
 | `ragusa.jpg`    | Ragusa Ibla, Panorama | Hein56didden | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0) | [Commons](https://commons.wikimedia.org/wiki/File:Panorama_Ragusa_Ibla.JPG) |
 | `modica.jpg`    | Modica, Duomo di San Giorgio | Ruggero Poggianella | [CC BY-SA 2.0](https://creativecommons.org/licenses/by-sa/2.0) | [Commons](https://commons.wikimedia.org/wiki/File:Modica,_Duomo_di_San_Giorgio.jpg) |
 | `scicli.jpg`    | Scicli, Santa Maria della Croce | Ludvig14 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [Commons](https://commons.wikimedia.org/wiki/File:Scicli_ChurchSanta_Maria_della_Croce_010_0873.jpg) |
 | `noto.jpg`      | Noto zur blauen Stunde | Gianluca Pirro | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [Commons](https://commons.wikimedia.org/wiki/File:Noto_nell%27ora_blu.jpg) |
-| `marzamemi.jpg` | Marzamemi, alte Tonnara | Einaz80 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | [Commons](https://commons.wikimedia.org/wiki/File:Tonnara_Marzamemi.jpg) |
 
 ## Bild ersetzen
 

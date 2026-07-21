@@ -8,7 +8,7 @@ Zwei Routen auf den Spuren des Abts Paolo Balsamo (1808), beide ab Palermo,
 oben im Routenabschnitt umschaltbar:
 
 - **Route A — Ätna-Route:** Palermo → Termini Imerese → Caltavuturo → Alimena → Leonforte → Catenanuova → Catania (272 km).
-- **Route B — Grafschaft Modica:** Palermo → Corleone → Agrigento → Gela → Ragusa → Modica → Scicli → Noto (299 km, nach der Komoot-Tour). Bei Route B ist ein Link zur Komoot-Strecke eingeblendet.
+- **Route B — Grafschaft Modica:** Palermo → Vallelunga → Caltanissetta → Caltagirone → Chiaramonte/Comiso → Ragusa → Modica → Scicli → Noto (303 km). Folgt Balsamos tatsächlichem Hinweg von 1808 durchs zentrale Landesinnere (belegt im *Giornale del viaggio*, Etappen bei Alqamah/Liber Liber).
 - Eigener Abschnitt zur Person Paolo Balsamo, mit zwei Originalzitaten aus dem Reisetagebuch.
 - Sizilien-Karte mit beiden Routen und Radfahrer, Etappenliste, Preis, Guides, Buchungsformular.
 - Karte, Etappenliste und Galerie wechseln mit der gewählten Route.
@@ -27,7 +27,7 @@ Die Galerie „Die Route in Bildern" wechselt mit der gewählten Route und zieht
 freie Fotos von Wikimedia Commons (Nachweise in `fotos/BILDNACHWEIS.md`):
 
 - **Route A:** `palermo.jpg`, `termini.jpg`, `madonie.jpg`, `leonforte.jpg`, `catania.jpg`, `tisch.jpg`
-- **Route B:** `agrigento.jpg`, `ragusa.jpg`, `modica.jpg`, `scicli.jpg`, `noto.jpg`, `marzamemi.jpg`
+- **Route B:** `caltanissetta.jpg`, `caltagirone.jpg`, `ragusa.jpg`, `modica.jpg`, `scicli.jpg`, `noto.jpg`
 
 Foto ersetzen: Datei in `fotos/` mit gleichem Namen überschreiben (die Zuordnung
 steht im `GALLERY`-Objekt im Skript). Fehlt eine Datei, zeigt die Kachel
