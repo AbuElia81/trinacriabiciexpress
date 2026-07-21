@@ -4,11 +4,14 @@ Website für geführte Radwochen in Sizilien — mit Giacomo (Noto) und Michael 
 
 Statische Seite, eine Datei, kein Build-Prozess. Einfach `index.html` im Browser öffnen.
 
-## Inhalt
+- **Die Balsamo-Route:** Catania → Catenanuova → Agira → Leonforte → Alimena → Caltavuturo → Cerda → Termini Imerese → Trabia → Palermo. Folgt den Etappen aus dem *Giornale del viaggio fatto in Sicilia* des Abts Paolo Balsamo von 1808.
+- Eigener Abschnitt zur Person Paolo Balsamo, mit zwei Originalzitaten aus dem Reisetagebuch.
+- Sizilien-Karte mit eingezeichneter Route und Radfahrer, Etappenliste, Preis, Guides, Buchungsformular.
+- Dreisprachig (Deutsch, Englisch, Italienisch), umschaltbar oben rechts.
 
-- **Route A — Balsamo-Route:** Catania → Catenanuova → Agira → Leonforte → Alimena → Caltavuturo → Cerda → Termini Imerese → Trabia → Palermo. Folgt den Etappen aus dem *Giornale del viaggio fatto in Sicilia* des Abts Paolo Balsamo von 1808.
-- **Route B — Val di Noto:** Noto, Marzamemi, Siracusa, Palazzolo Acreide, Ragusa, Modica, Scicli.
-- Interaktive Sizilien-Karte, Etappenliste, Preis, Guides, Buchungsformular.
+> Die frühere zweite Tour (Route B — Val di Noto) ist auf Wunsch entfernt. Der
+> Text und die Etappen dazu liegen noch in der Git-Historie, falls sie einmal
+> zurück soll.
 
 ## Struktur
 
@@ -20,8 +23,8 @@ fotos/
 ```
 
 Weitere Fotos ergänzen: Datei in `fotos/` legen, Dateiname muss zum
-`data-foto`-Attribut im HTML passen. Erwartet werden:
-`noto.jpg`, `ortigia.jpg`, `modica.jpg`, `tisch.jpg`, `madonie.jpg`.
+`data-foto`-Attribut im HTML passen. Die Galerie „Die Route in Bildern" erwartet:
+`catania.jpg`, `leonforte.jpg`, `madonie.jpg`, `termini.jpg`, `tisch.jpg`, `palermo.jpg`.
 Fehlende Bilder zeigen automatisch einen beschrifteten Platzhalter.
 
 ## Vor dem Livegang noch erledigen
