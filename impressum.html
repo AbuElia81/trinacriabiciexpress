@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impressum — Trinacria Bici Express</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,900&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--stone:#EFEAE0;--ink:#10303B;--ink-2:#1D4A55;--sea:#2E7E8C;--fico:#C0326B;--limone:#E7B23A;--line:rgba(16,48,59,.18)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--stone);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.65;font-size:17px}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--line);background:rgba(239,234,224,.92);position:sticky;top:0}
+.bar{display:flex;align-items:center;height:64px;gap:16px}
+.mark{font-family:"Fraunces",Georgia,serif;font-weight:900;letter-spacing:.1em;text-decoration:none;color:var(--ink);font-size:15px}
+.mark span{color:var(--fico)}
+.back{margin-left:auto;font-size:14px;color:var(--sea);text-decoration:none}
+.back:hover{color:var(--fico)}
+main{padding:44px 0 80px}
+h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(30px,5vw,40px);margin:0 0 10px}
+h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:21px;margin:34px 0 6px}
+p,li{max-width:66ch}
+address{font-style:normal}
+a{color:var(--sea)}
+.draft{background:#F7ECC9;border:1px solid var(--limone);border-left:4px solid var(--limone);
+  padding:14px 16px;font-size:14.5px;line-height:1.55;margin:0 0 22px}
+.ph{color:var(--fico);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.9em}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;color:var(--sea);text-transform:uppercase;letter-spacing:.12em}
+footer{border-top:1px solid var(--line);padding:24px 0;font-size:13px;color:var(--ink-2)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="index.html">TRINACRIA<span> BICI </span>EXPRESS</a>
+    <a class="back" href="index.html">← zurück zur Startseite</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="mono">Rechtliches</p>
+    <h1>Impressum</h1>
+
+    <p class="draft"><strong>Entwurf.</strong> Diese Seite ist eine Vorlage. Bitte vor dem Livegang mit euren
+      echten Angaben füllen (alles in <span class="ph">[eckigen Klammern]</span>) und im Zweifel rechtlich
+      prüfen lassen. In Italien und Österreich sind solche Pflichtangaben vorgeschrieben.</p>
+
+    <h2>Anbieter</h2>
+    <address>
+      <span class="ph">[Vor- und Nachname bzw. Firmenname]</span><br>
+      <span class="ph">[Rechtsform, z. B. Einzelunternehmen / Ditta individuale / GmbH]</span><br>
+      <span class="ph">[Straße und Hausnummer]</span><br>
+      <span class="ph">[PLZ und Ort]</span>, <span class="ph">[Land]</span>
+    </address>
+
+    <h2>Vertreten durch</h2>
+    <p>Giacomo <span class="ph">[Nachname]</span> und Michael <span class="ph">[Nachname]</span></p>
+
+    <h2>Kontakt</h2>
+    <p>
+      E-Mail: <span class="ph">[echte E-Mail-Adresse]</span><br>
+      Telefon: <span class="ph">[+39 …]</span>
+    </p>
+
+    <h2>Umsatzsteuer / Partita IVA</h2>
+    <p>Umsatzsteuer-Identifikationsnummer / Partita IVA: <span class="ph">[IT… bzw. ATU…]</span></p>
+
+    <h2>Inhaltlich verantwortlich</h2>
+    <p><span class="ph">[Name und Anschrift der verantwortlichen Person]</span></p>
+
+    <h2>Haftung für Inhalte und Links</h2>
+    <p>Die Inhalte dieser Seiten wurden mit Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit
+      und Aktualität wird keine Gewähr übernommen. Für die Inhalte verlinkter externer Seiten sind
+      deren Betreiber verantwortlich; zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar.</p>
+
+    <h2>Bildnachweise</h2>
+    <p>Die Fotos in der Galerie stammen von Wikimedia Commons; Urheber und Lizenzen sind im Footer der
+      Startseite sowie in <a href="fotos/BILDNACHWEIS.md">fotos/BILDNACHWEIS.md</a> aufgeführt. Die Fotos
+      der beiden Guides gehören Giacomo und Michael.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html">Startseite</a> · <a href="datenschutz.html">Datenschutz</a> ·
+    © <span id="y"></span> Trinacria Bici Express
+  </div>
+</footer>
+<script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+</body>
+</html>

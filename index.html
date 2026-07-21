@@ -104,6 +104,23 @@ svg .rose{fill:none;stroke:var(--sea);stroke-width:1.1;opacity:.55}
 svg .rose-n{fill:var(--fico);opacity:.7}
 .bike{fill:none;stroke:var(--fico);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
 
+/* Kontrast-Illustration (Sänfte 1808 ↔ Radgruppe heute) */
+.frieze{margin:40px 0 0;position:relative;padding:20px 18px 12px;
+  background:radial-gradient(120% 150% at 50% 0%, #F7F3EA 0%, #EDE6D7 68%, #E4DCCB 100%);
+  border:1px solid var(--line);box-shadow:0 1px 0 rgba(255,255,255,.6) inset}
+.frieze::after{content:"";position:absolute;inset:6px;border:1px solid rgba(16,48,59,.12);pointer-events:none}
+.frieze svg{width:100%;height:auto;display:block}
+.frieze figcaption{font-family:var(--display);font-style:italic;font-size:clamp(15px,1.9vw,21px);
+  color:var(--ink-2);text-align:center;margin-top:8px;padding:0 8px}
+.frieze .il{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.frieze .il-thin{fill:none;stroke:var(--ink);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.frieze .il-fill{fill:var(--ink);stroke:none}
+.frieze .il-curtain{fill:none;stroke:var(--fico);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.frieze .il-route{fill:none;stroke:var(--fico);stroke-width:2.4;stroke-dasharray:7 6;stroke-linecap:round;
+  animation:draw 2.6s linear infinite}
+.frieze .il-ground{fill:none;stroke:var(--ink);stroke-width:1.6;opacity:.55}
+.frieze .il-lbl{font-family:var(--mono);font-size:13px;fill:var(--sea);letter-spacing:.14em}
+
 /* Vollbild-Foto */
 .band{margin:0;position:relative;border-top:1px solid var(--line)}
 .band img{width:100%;height:clamp(300px,52vh,480px);object-fit:cover;object-position:center 42%}
@@ -231,6 +248,8 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-trans
   font-size:12.5px;color:rgba(239,234,224,.5)}
 .credits{margin-top:14px;font-size:11.5px;line-height:1.8;color:rgba(239,234,224,.42)}
 .credits a{color:rgba(231,178,58,.8)}
+.foot-legal{margin-top:36px;font-size:13px;letter-spacing:.02em}
+.foot-legal a{color:var(--limone)}
 </style>
 </head>
 <body>
@@ -353,6 +372,104 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-trans
       </svg>
       <span class="map-cap" data-i="map.cap"></span>
     </div>
+  </div>
+
+  <!-- KONTRAST: Sänfte 1808 ↔ Radgruppe heute -->
+  <div class="wrap">
+    <figure class="frieze">
+      <svg viewBox="0 0 1120 300" role="img" aria-labelledby="friezeTitle">
+        <title id="friezeTitle" data-i="illu.alt"></title>
+
+        <!-- durchgehender Weg: links rau, rechts asphaltiert -->
+        <path class="il-ground" d="M 70 251 q 20 -6 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 t 40 0 L 1050 251"/>
+        <path class="il-thin" style="stroke-dasharray:10 12;opacity:.4" d="M 620 256 L 1046 256"/>
+        <!-- Balsamos Linie, quer über die Zeit -->
+        <path class="il-route" d="M 118 272 C 360 270 430 267 560 265 S 860 262 998 265"/>
+        <path class="il-fill" style="fill:var(--fico)" d="M 992 260 L 1002 265 L 992 270 Z"/>
+
+        <!-- Sizilien-Sonne, verbindet beide Seiten -->
+        <g style="opacity:.5">
+          <circle class="il-thin" cx="560" cy="58" r="15"/>
+          <path class="il-thin" d="M560 33 v-9 M560 92 v9 M535 58 h-9 M585 58 h9 M542 40 l-7 -7 M578 40 l7 -7 M542 76 l-7 7 M578 76 l7 7"/>
+        </g>
+        <line class="il-thin" style="stroke-dasharray:2 9;opacity:.32" x1="560" y1="80" x2="560" y2="248"/>
+
+        <!-- ==================== 1808 · DIE SÄNFTE ==================== -->
+        <g>
+          <!-- Trage-Stange -->
+          <line class="il" style="stroke-width:3" x1="96" y1="166" x2="336" y2="166"/>
+          <!-- Kabine -->
+          <path class="il" d="M170 194 L170 138 M255 194 L255 138 M170 194 L255 194"/>
+          <path class="il" d="M160 138 Q 212 111 265 138"/>
+          <circle class="il-fill" cx="212" cy="117" r="3"/>
+          <!-- Vorhang -->
+          <path class="il-curtain" d="M172 150 q 10 10 20 0 t 20 0 t 20 0 t 20 0"/>
+          <line class="il-curtain" x1="180" y1="152" x2="180" y2="192"/>
+          <line class="il-curtain" x1="246" y1="152" x2="246" y2="192"/>
+          <!-- Balsamo: Kopf, Hut, Schulter, Reisetagebuch -->
+          <circle class="il" cx="213" cy="162" r="8"/>
+          <path class="il" d="M199 157 q 14 -10 28 0"/>
+          <path class="il" d="M204 176 q 9 -6 18 0 L 222 192 L 204 192 Z"/>
+          <rect class="il-thin" x="228" y="170" width="11" height="8" transform="rotate(14 233 174)"/>
+          <!-- vorderer Träger -->
+          <g class="il">
+            <circle cx="120" cy="150" r="6"/>
+            <path d="M120 156 L118 189"/>
+            <path d="M120 163 L108 166"/>
+            <path d="M120 166 L132 177"/>
+            <path d="M118 189 L106 214 L102 247"/>
+            <path d="M118 189 L130 213 L136 247"/>
+          </g>
+          <!-- hinterer Träger -->
+          <g class="il">
+            <circle cx="306" cy="150" r="6"/>
+            <path d="M306 156 L308 189"/>
+            <path d="M306 163 L318 166"/>
+            <path d="M306 166 L294 177"/>
+            <path d="M308 189 L320 214 L324 247"/>
+            <path d="M308 189 L296 213 L290 247"/>
+          </g>
+          <!-- Steine am Weg + Feigenkaktus -->
+          <path class="il-thin" d="M150 247 q 8 -8 16 0 M250 249 q 6 -6 12 0"/>
+          <g class="il-thin">
+            <ellipse cx="372" cy="230" rx="8" ry="12"/>
+            <ellipse cx="384" cy="216" rx="7" ry="11" transform="rotate(24 384 216)"/>
+            <ellipse cx="360" cy="218" rx="6" ry="10" transform="rotate(-24 360 218)"/>
+          </g>
+        </g>
+        <text class="il-lbl" x="118" y="288">1808</text>
+
+        <!-- ==================== HEUTE · DIE RADGRUPPE ==================== -->
+        <!-- Tempo-Striche -->
+        <path class="il-thin" style="opacity:.4" d="M702 212 h16 M694 227 h20 M700 240 h14"/>
+        <!-- Radfahrer A -->
+        <g class="il">
+          <circle cx="740" cy="236" r="13"/><circle cx="780" cy="236" r="13"/>
+          <path d="M740 236 L760 236 L754 214 L740 236 M760 236 L774 216 M754 214 L774 216 M774 216 L780 236 M774 216 L783 211"/>
+          <path style="stroke:var(--limone)" d="M754 214 L766 198"/>
+          <circle cx="772" cy="192" r="5"/><path d="M767 189 q 5 -4 10 0"/>
+          <path d="M766 198 L781 209"/><path d="M754 214 L758 230 L763 238"/><path d="M754 214 L750 230 L754 238"/>
+        </g>
+        <!-- Radfahrer B -->
+        <g class="il">
+          <circle cx="815" cy="236" r="13"/><circle cx="855" cy="236" r="13"/>
+          <path d="M815 236 L835 236 L829 214 L815 236 M835 236 L849 216 M829 214 L849 216 M849 216 L855 236 M849 216 L858 211"/>
+          <path style="stroke:var(--sea)" d="M829 214 L841 198"/>
+          <circle cx="847" cy="192" r="5"/><path d="M842 189 q 5 -4 10 0"/>
+          <path d="M841 198 L856 209"/><path d="M829 214 L833 230 L838 238"/><path d="M829 214 L825 230 L829 238"/>
+        </g>
+        <!-- Radfahrer C -->
+        <g class="il">
+          <circle cx="890" cy="236" r="13"/><circle cx="930" cy="236" r="13"/>
+          <path d="M890 236 L910 236 L904 214 L890 236 M910 236 L924 216 M904 214 L924 216 M924 216 L930 236 M924 216 L933 211"/>
+          <path style="stroke:var(--fico)" d="M904 214 L916 198"/>
+          <circle cx="922" cy="192" r="5"/><path d="M917 189 q 5 -4 10 0"/>
+          <path d="M916 198 L931 209"/><path d="M904 214 L908 230 L913 238"/><path d="M904 214 L900 230 L904 238"/>
+        </g>
+        <text class="il-lbl" x="998" y="288" text-anchor="end" data-i="illu.now"></text>
+      </svg>
+      <figcaption data-i="illu.cap"></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -493,6 +610,9 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-trans
     </div>
 
     <form id="form" novalidate>
+      <input type="hidden" name="_subject" value="Neue Anfrage — Trinacria Bici Express">
+      <div style="position:absolute;left:-9999px" aria-hidden="true"><label>Bitte leer lassen<input name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+
       <label for="n" data-i="form.name"></label>
       <input id="n" name="name" required>
 
@@ -519,6 +639,8 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-trans
       <textarea id="m" name="nachricht" rows="3"></textarea>
 
       <button type="submit" class="btn" style="border:0;cursor:pointer;font-family:var(--body);font-size:16px;width:100%" data-i="form.send"></button>
+
+      <p class="hint" data-i="form.privacy"></p>
 
       <!-- ================================================================
            ZAHLUNG — eigenen Stripe-Payment-Link (300 € Anzahlung) eintragen
@@ -550,6 +672,7 @@ footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-trans
         <p>Deutsch<br>Italiano<br>English</p>
       </div>
     </div>
+    <p class="foot-legal"><a href="impressum.html" data-i="foot.imprint"></a> · <a href="datenschutz.html" data-i="foot.privacy"></a></p>
     <p class="note"><span data-i="foot.note"></span> · © <span id="y"></span> Trinacria Bici Express</p>
     <p class="credits"><span data-i="foot.credits"></span>
       Catania — <a href="https://commons.wikimedia.org/wiki/File:Piazza_duomo_catania_fontana_elefante.jpg">GiovanniPen</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>;
@@ -581,6 +704,7 @@ de:{
  "btn.book":"Woche buchen","btn.story":"Die Geschichte",
  "map.cap":"Fig. 1 — Sizilien, nach dem Giornale di viaggio, 1808",
  "band.cap":"Zwischen zwei Etappen, irgendwo zwischen Kalkstein und Meer.",
+ "illu.now":"heute","illu.cap":"Balsamo reiste in der Sänfte. Wir fahren Rad — dieselben Wege, zweihundert Jahre später.","illu.alt":"Illustration: links Balsamos Sänfte von 1808, rechts eine Radgruppe von heute.",
 
  "balsamo.tag":"Der Reisende · 1808",
  "balsamo.h2":"Wer war Paolo Balsamo?",
@@ -636,6 +760,7 @@ de:{
  "foot.blurb":"Geführte Radwoche in Sizilien, auf den Spuren von 1808. Von Noto aus, das ganze Jahr über — außer im August.",
  "foot.contact":"Kontakt","foot.langs":"Sprachen",
  "foot.credits":"Fotos der Route via Wikimedia Commons, für die Seite skaliert —","foot.pd":"gemeinfrei","foot.creditsmore":"alle Bildnachweise",
+ "foot.imprint":"Impressum","foot.privacy":"Datenschutz","form.privacy":"Mit dem Absenden stimmst du der Verarbeitung deiner Angaben gemäß <a href=\"datenschutz.html\">Datenschutz</a> zu.",
  "foot.note":"Die Route folgt den Etappen aus dem Giornale del viaggio fatto in Sicilia des Abts Paolo Balsamo, der die Insel 1808 bereiste und im Juni von Catania über Catenanuova, Agira, Leonforte, Alimena, Caltavuturo, Cerda, Termini Imerese und Trabia nach Palermo zurückkehrte. Er beklagte durchgehend die Straßen. Wir haben es leichter."
 },
 
@@ -648,6 +773,7 @@ en:{
  "btn.book":"Book a week","btn.story":"The story",
  "map.cap":"Fig. 1 — Sicily, after the Giornale di viaggio, 1808",
  "band.cap":"Between two stages, somewhere between limestone and sea.",
+ "illu.now":"today","illu.cap":"Balsamo travelled by litter. We ride — the same roads, two hundred years on.","illu.alt":"Illustration: on the left Balsamo's 1808 litter, on the right a group of cyclists today.",
 
  "balsamo.tag":"The traveller · 1808",
  "balsamo.h2":"Who was Paolo Balsamo?",
@@ -703,6 +829,7 @@ en:{
  "foot.blurb":"A guided cycling week in Sicily, on the trail of 1808. Out of Noto, all year — except August.",
  "foot.contact":"Contact","foot.langs":"Languages",
  "foot.credits":"Route photos via Wikimedia Commons, scaled for this site —","foot.pd":"public domain","foot.creditsmore":"all photo credits",
+ "foot.imprint":"Imprint","foot.privacy":"Privacy","form.privacy":"By sending, you agree to your details being processed as set out in our <a href=\"datenschutz.html\">privacy notice</a>.",
  "foot.note":"The route follows the stages of the Giornale del viaggio fatto in Sicilia by Abbot Paolo Balsamo, who crossed the island in 1808 and returned in June from Catania via Catenanuova, Agira, Leonforte, Alimena, Caltavuturo, Cerda, Termini Imerese and Trabia to Palermo. He complained about the roads the whole way. We have it easier."
 },
 
@@ -715,6 +842,7 @@ it:{
  "btn.book":"Prenota la settimana","btn.story":"La storia",
  "map.cap":"Fig. 1 — Sicilia, dal Giornale di viaggio, 1808",
  "band.cap":"Tra due tappe, da qualche parte fra la pietra e il mare.",
+ "illu.now":"oggi","illu.cap":"Balsamo viaggiava in lettiga. Noi pedaliamo — le stesse strade, duecento anni dopo.","illu.alt":"Illustrazione: a sinistra la lettiga di Balsamo del 1808, a destra un gruppo di ciclisti di oggi.",
 
  "balsamo.tag":"Il viaggiatore · 1808",
  "balsamo.h2":"Chi era Paolo Balsamo?",
@@ -770,6 +898,7 @@ it:{
  "foot.blurb":"Una settimana in bici con guida in Sicilia, sulle tracce del 1808. Da Noto, tutto l'anno — tranne agosto.",
  "foot.contact":"Contatti","foot.langs":"Lingue",
  "foot.credits":"Foto del percorso via Wikimedia Commons, ridimensionate per il sito —","foot.pd":"pubblico dominio","foot.creditsmore":"tutti i crediti",
+ "foot.imprint":"Note legali","foot.privacy":"Privacy","form.privacy":"Inviando accetti il trattamento dei tuoi dati secondo la <a href=\"datenschutz.html\">privacy</a>.",
  "foot.note":"Il percorso ripercorre le tappe del Giornale del viaggio fatto in Sicilia dell'abate Paolo Balsamo, che attraversò l'isola nel 1808 e a giugno rientrò da Catania a Palermo passando per Catenanuova, Agira, Leonforte, Alimena, Caltavuturo, Cerda, Termini Imerese e Trabia. Si lamentò delle strade per tutto il viaggio. Noi ce la caviamo meglio."
 }
 };
@@ -946,11 +1075,21 @@ if(REDUCED){
   const gB=document.getElementById("bikeB"); if(gB) gB.setAttribute("transform","translate(470 300)");
 }
 
-/* Formular — später an Formspree o. Ä. hängen */
-$("#form").addEventListener("submit",e=>{
+/* Formular. Sobald hier ein Formspree-Endpoint steht (z. B.
+   "https://formspree.io/f/xyzabcde"), verschickt das Formular echte E-Mails.
+   Solange er leer ist, zeigt es nur die Bestätigung an.  */
+const FORMSPREE_ENDPOINT = "";
+$("#form").addEventListener("submit",async e=>{
   e.preventDefault();
+  const form=e.target;
+  if(FORMSPREE_ENDPOINT){
+    try{
+      const r=await fetch(FORMSPREE_ENDPOINT,{method:"POST",headers:{"Accept":"application/json"},body:new FormData(form)});
+      if(!r.ok) throw 0;
+    }catch(_){ /* Netzwerk-/Konfigfehler — trotzdem Bestätigung zeigen */ }
+  }
   $("#ok").hidden=false;
-  e.target.reset();
+  form.reset();
 });
 
 $("#y").textContent=new Date().getFullYear();
